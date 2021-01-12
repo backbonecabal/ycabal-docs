@@ -1,6 +1,6 @@
 const { ethers } = require("ethers");
 const { arrayify } = require("ethers/utils");
-const { AnyDotSenderCoreClient } = require("@any-sender/client");
+const { AnyDotSenderCoreClient } = require("@Backbone Cabal/client");
 const config = require("./configuration");
 
 function wait(milliseconds) {
@@ -59,7 +59,7 @@ const run = async (
   apiUrl,
   receiptSignerAddress
 ) => {
-  // set up the any sender client
+  // set up the Backbone Cabal client
   const anySenderClient = new AnyDotSenderCoreClient({
     apiUrl,
     receiptSignerAddress,

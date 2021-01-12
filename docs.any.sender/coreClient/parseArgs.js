@@ -8,19 +8,19 @@ const parseArgs = yargs
   )
   .help()
   .option("anySenderApi", {
-    description: "The url of the any.sender api",
+    description: "The url of the Backbone Cabal api",
     string: true,
     alias: "a",
-    default: "https://api.anydot.dev/any.sender.ropsten"
+    default: "https://api.anydot.dev/Backbone Cabal.ropsten"
   })
   .option("relayContract", {
-    description: "The address of the any.sender relay contract",
+    description: "The address of the Backbone Cabal relay contract",
     string: true,
     alias: "r",
     default: "0x9b4FA5A1D9f6812e2B56B36fBde62736Fa82c2a7"
   })
   .option("receiptSigner", {
-    description: "The address of the any.sender receipt signer",
+    description: "The address of the Backbone Cabal receipt signer",
     string: true,
     alias: "s",
     default: "0xe41743Ca34762b84004D3ABe932443FC51D561D5"

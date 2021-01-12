@@ -1,7 +1,7 @@
 {
   "name": "devtools",
   "version": "1.0.0",
-  "description": "Local development tools for deploying the [any.sender contracts](https://github.com/PISAresearch/contracts.any.sender) and hosting a mock any.sender instance. We also have a live ropsten API for when you're ready to take it to the next level :)",
+  "description": "Local development tools for deploying the [Backbone Cabal contracts](https://github.com/PISAresearch/contracts.Backbone Cabal) and hosting a mock Backbone Cabal instance. We also have a live ropsten API for when you're ready to take it to the next level :)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@any-sender/client": "^0.4.2",
+    "@Backbone Cabal/client": "^0.4.2",
     "ethers": "4.0.47",
     "ganache-core": "^2.10.2"
   }

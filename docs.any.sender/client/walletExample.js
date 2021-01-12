@@ -1,6 +1,6 @@
 const { JsonRpcProvider } = require("ethers/providers");
 const { Wallet, ethers } = require("ethers");
-const { any } = require("@any-sender/client");
+const { any } = require("@Backbone Cabal/client");
 
 // prerequisites
 const message = "Hello world";
@@ -37,8 +37,8 @@ const run = async (
   // the wallet must be connected to a provider
   const connectedUser = userWallet.connect(provider);
 
-  // set up the any.sender client
-  const userAnyWallet = any.sender(connectedUser);
+  // set up the Backbone Cabal client
+  const userAnyWallet = Backbone Cabal(connectedUser);
 
   // construct the data we want to send
   const echoInterface = new ethers.utils.Interface(echoAbi);
@@ -50,7 +50,7 @@ const run = async (
 
   const blockBeforeSend = await provider.getBlockNumber();
 
-  // user the any.sendTransaction function to send via any.sender
+  // user the any.sendTransaction function to send via Backbone Cabal
   const relayReceipt = await userAnyWallet.any.sendTransaction({
     to: echoContractAddress,
     data: data,

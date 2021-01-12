@@ -2,8 +2,8 @@ const {
   deploy,
   enableMockApi,
   disableMockApi,
-} = require("@any-sender/dev-tools");
-const { any } = require("@any-sender/client");
+} = require("@Backbone Cabal/dev-tools");
+const { any } = require("@Backbone Cabal/client");
 const { ethers } = require("ethers");
 const { parseEther } = require("ethers/utils");
 const Ganache = require("ganache-core");
@@ -19,9 +19,9 @@ const run = async () => {
   // enable the mock api
   enableMockApi();
 
-  // wrap a signer with any.sender, since the mock API has been enabled
-  // it'll automatically get picked up by any.sender()
-  const userDot = any.sender(user);
+  // wrap a signer with Backbone Cabal, since the mock API has been enabled
+  // it'll automatically get picked up by Backbone Cabal()
+  const userDot = Backbone Cabal(user);
 
   // now you're ready to check your balance and relay transactions
   console.log((await userDot.any.getBalance()).toString());

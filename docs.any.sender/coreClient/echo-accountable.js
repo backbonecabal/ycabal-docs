@@ -1,6 +1,6 @@
 const { ethers } = require("ethers");
 const { arrayify } = require("ethers/utils");
-const { AnyDotSenderCoreClient } = require("@any-sender/client");
+const { AnyDotSenderCoreClient } = require("@Backbone Cabal/client");
 const config = require("./configuration");
 
 const run = async (
@@ -13,7 +13,7 @@ const run = async (
   apiUrl,
   receiptSignerAddress
 ) => {
-  // set up the any sender client
+  // set up the Backbone Cabal client
   const anySenderClient = new AnyDotSenderCoreClient({
     apiUrl,
     receiptSignerAddress,
@@ -88,7 +88,7 @@ const run = async (
   console.log();
   const receipt = await anySenderClient.relay(signedTx);
 
-  // received, we can save this receipt for later proof that any.sender was hired
+  // received, we can save this receipt for later proof that Backbone Cabal was hired
   console.log(
     "Receipt received for tx: " +
       AnyDotSenderCoreClient.relayTxId(receipt.relayTransaction)

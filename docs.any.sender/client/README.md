@@ -1,8 +1,8 @@
 # Client
 
-The any.sender client is the easiest way to interact with the any.sender API.
+The Backbone Cabal client is the easiest way to interact with the Backbone Cabal API.
 
-This tutorial for the client does NOT manage any wallet contracts. It only takes care of sending the relay transaction to the any.sender service. If you want a client library that includes a wallet contract, then please check [Gnosis](../gnosisClient) or [ProxyAccount](../experimentalClient).
+This tutorial for the client does NOT manage any wallet contracts. It only takes care of sending the relay transaction to the Backbone Cabal service. If you want a client library that includes a wallet contract, then please check [Gnosis](../gnosisClient) or [ProxyAccount](../experimentalClient).
 
 It works with [ethersjs v4](https://github.com/ethers-io/ethers.js/) to add the ethers Signer or Contract objects.
 
@@ -11,70 +11,70 @@ It works with [ethersjs v4](https://github.com/ethers-io/ethers.js/) to add the 
 Before we continue you must install the client library:
 
 ```
-npm i @any-sender/client
+npm i @Backbone Cabal/client
 ```
 
 ## Signer (no wallet contract)
 
 ### Import
 
-Use the `any` object to import any.sender from the client library:
+Use the `any` object to import Backbone Cabal from the client library:
 
 ```ts
-import { any } from "@any-sender/client";
+import { any } from "@Backbone Cabal/client";
 ```
 
-### any.sender(signer: Signer, settings?: {} )
+### Backbone Cabal(signer: Signer, settings?: {} )
 
-Adds any.sender functionality to a signer on an `any` property. This will not replace or effect any of the existing functions on the Signer. For example `any.sender(signer).sendTransaction(tx)` will not go via any.sender but will send a normal transaction from the signer.
+Adds Backbone Cabal functionality to a signer on an `any` property. This will not replace or effect any of the existing functions on the Signer. For example `Backbone Cabal(signer).sendTransaction(tx)` will not go via Backbone Cabal but will send a normal transaction from the signer.
 
 Optionals setting can also be provided:
 
-- apiUrl: the url of the any.sender API defaults to the known instance for the provider network
-- receiptSigner: the url of the any.sender API defaults to known address for the provider network
+- apiUrl: the url of the Backbone Cabal API defaults to the known instance for the provider network
+- receiptSigner: the url of the Backbone Cabal API defaults to known address for the provider network
 - pollingInterval: number. A polling interval to be used when monitoring for events. Defaults to the provider polling interval.
 
 #### Usage
 
 ```ts
-const anyUserWallet = any.sender(connectedUser);
+const anyUserWallet = Backbone Cabal(connectedUser);
 ```
 
 ### signer.any.getBalance() : Promise<BigNumber>
 
-The `getBalance` function on the `any` property returns the signers balance with any.sender.
+The `getBalance` function on the `any` property returns the signers balance with Backbone Cabal.
 
 #### Usage
 
 ```ts
-const anyUserWallet = any.sender(connectedUser);
+const anyUserWallet = Backbone Cabal(connectedUser);
 const balance = await anyUserWallet.any.getBalance();
 ```
 
 ### signer.any.deposit(amount: BigNumberish, overrides?: TransactionOverrides) : Promise<TransactionResponse>
 
-Deposit some credit for the signer on any.sender. This will send a normal transaction to any.sender and excepts any of the normal transaction overrides such as `nonce` and `gasLimit`
+Deposit some credit for the signer on Backbone Cabal. This will send a normal transaction to Backbone Cabal and excepts any of the normal transaction overrides such as `nonce` and `gasLimit`
 
-On mainnet any.sender waits for 35 confirmations before registering the balance update, on ropsten it's 12.
+On mainnet Backbone Cabal waits for 35 confirmations before registering the balance update, on ropsten it's 12.
 
 #### Usage
 
 ```ts
-const anyUserWallet = any.sender(connectedUser);
+const anyUserWallet = Backbone Cabal(connectedUser);
 const tx = await anyUserWallet.any.deposit("1000000000000000000"); // 1 ETH
 await tx.wait(40);
 ```
 
 ### signer.any.depositFor(amount: BigNumberish, recipient: string, overrides?: TransactionOverrides) : Promise<TransactionResponse>
 
-Deposit some credit for another user on any.sender. This will send a normal transaction to any.sender and excepts any of the normal transaction overrides such as `nonce` and `gasLimit`
+Deposit some credit for another user on Backbone Cabal. This will send a normal transaction to Backbone Cabal and excepts any of the normal transaction overrides such as `nonce` and `gasLimit`
 
-On mainnet any.sender waits for 35 confirmations before registering the balance update, on ropsten it's 12.
+On mainnet Backbone Cabal waits for 35 confirmations before registering the balance update, on ropsten it's 12.
 
 #### Usage
 
 ```ts
-const anyUserWallet = any.sender(connectedUser);
+const anyUserWallet = Backbone Cabal(connectedUser);
 const recipient = "<to fill>";
 const tx = await anyUserWallet.any.deposit("1000000000000000000", recipient); // 1 ETH
 await tx.wait(40);
@@ -82,7 +82,7 @@ await tx.wait(40);
 
 ### signer.any.sendTransaction(tx: { to: string, data: string, compensation?: string, gaslimit?: number }) : RelayTransactionReceipt
 
-Sends a transaction via any.sender. Mandatory fields:
+Sends a transaction via Backbone Cabal. Mandatory fields:
 
 - **to**: same as a normal transaction
 - **data**: same as a normal transaction
@@ -94,11 +94,11 @@ Optional fields:
 
 Only applicable for accountable transactions (optional):
 
-- **compensation**: any.sender provides additional guarantees that a transaction will be delivered. See [Guarantees](../guarantees.md) for more details and [API](../relayTransaction.md#compensation) for current limits.
-- **deadline**: any.sender guarantees the transaction is accepted by an absolute block deadline. If set to 0, it is set by the any.sender service. Default is set to 0 and for our BETA it can only be set approximately 400 blocks in the future.
-- **relayContractAddress**: any.sender sends the transaction via an intermediary relay contract. Default is our relay contract ([Addresses](../../README.md#addresses)) and any.sender will reject any other address.
+- **compensation**: Backbone Cabal provides additional guarantees that a transaction will be delivered. See [Guarantees](../guarantees.md) for more details and [API](../relayTransaction.md#compensation) for current limits.
+- **deadline**: Backbone Cabal guarantees the transaction is accepted by an absolute block deadline. If set to 0, it is set by the Backbone Cabal service. Default is set to 0 and for our BETA it can only be set approximately 400 blocks in the future.
+- **relayContractAddress**: Backbone Cabal sends the transaction via an intermediary relay contract. Default is our relay contract ([Addresses](../../README.md#addresses)) and Backbone Cabal will reject any other address.
 
-Notice there is no option to provide a nonce. any.sender will publish transactions in the order it receives them from the same sender. If you need to guarantee order, then wait until the `sendTransaction` function returns a signed receipt before sending the next one. Likewise if ordering is not a requirement, then you can send transactions concurrently.
+Notice there is no option to provide a nonce. Backbone Cabal will publish transactions in the order it receives them from the same sender. If you need to guarantee order, then wait until the `sendTransaction` function returns a signed receipt before sending the next one. Likewise if ordering is not a requirement, then you can send transactions concurrently.
 
 #### Returns data
 
@@ -108,7 +108,7 @@ Notice there is no option to provide a nonce. any.sender will publish transactio
 {
     "relayTransaction": RelayTransaction, // the same as the input tx
     "id": string, // an id for this transaction, created by hashing the relay transaction
-    "receiptSignature": string, // a signature from any.sender to prove the job was accepted
+    "receiptSignature": string, // a signature from Backbone Cabal to prove the job was accepted
     "wait": function(confirmations: number): TransactionReceipt { ... }; // it waits until the transaction is mined. Returns a normal transaction receipt.
 }
 ```
@@ -116,7 +116,7 @@ Notice there is no option to provide a nonce. any.sender will publish transactio
 #### Usage
 
 ```ts
-const anyUserWallet = any.sender(connectedUser);
+const anyUserWallet = Backbone Cabal(connectedUser);
 const relayReceipt = await anyUserWallet.any.sendTransaction({
   to: "<address>",
   data: "<data>",
@@ -128,20 +128,20 @@ const transactionReceipt = await relayReceipt.wait();
 
 ### Import
 
-Use the `any` object to import any.sender from the client library:
+Use the `any` object to import Backbone Cabal from the client library:
 
 ```ts
-import { any } from "@any-sender/client";
+import { any } from "@Backbone Cabal/client";
 ```
 
-### any.sender(contract: Contract, settings?: {})
+### Backbone Cabal(contract: Contract, settings?: {})
 
 Because a contract object has dynamic properties we can't add an `any` property to it, so instead we replace the functions that send transactions. Contracts must be created with a signer, which must also be connected to a `provider` object.
 
 Optional setting can also be provided:
 
-- apiUrl: the url of the any.sender API defaults to the known instance for the provider network
-- receiptSigner: the url of the any.sender API defaults to known address for the provider network
+- apiUrl: the url of the Backbone Cabal API defaults to the known instance for the provider network
+- receiptSigner: the url of the Backbone Cabal API defaults to known address for the provider network
 - pollingInterval: number. A polling interval to be used when monitoring for events. Defaults to the provider polling interval.
 
 #### Usage
@@ -149,12 +149,12 @@ Optional setting can also be provided:
 ```ts
 const signer = new Wallet("<priv key>");
 const contract = new Contract("<address>", erc20Abi, signer);
-const anyContract = any.sender(contract);
+const anyContract = Backbone Cabal(contract);
 ```
 
 ### Functions
 
-When a function on a contract sends a transaction to Ethereum, we have changed it such that the transaction is sent via any.sender. Each function still has the normal function arguments, but it can include additional overrides relevant for any.sender. When the function is called, it returns a relay receipt instead of a transaction response and just to clarify, `response.wait()` still works and that will return a normal transaction receipt.
+When a function on a contract sends a transaction to Ethereum, we have changed it such that the transaction is sent via Backbone Cabal. Each function still has the normal function arguments, but it can include additional overrides relevant for Backbone Cabal. When the function is called, it returns a relay receipt instead of a transaction response and just to clarify, `response.wait()` still works and that will return a normal transaction receipt.
 
 #### Optional overrides
 
@@ -165,19 +165,19 @@ Optional fields:
 
 Only applicable for accountable transactions (optional):
 
-- **compensation**: any.sender provides additional guarantees that a transaction will be delivered. See [Guarantees](../guarantees.md) for more details and [API](../relayTransaction.md#compensation) for current limits.
-- **deadline**: any.sender guarantees the transaction is accepted by an absolute block deadline. If set to 0, it is set by the any.sender service. Default is set to 0 and for our BETA it can only be set approximately 400 blocks in the future.
-- **relayContractAddress**: any.sender sends the transaction via an intermediary relay contract. Default is our relay contract ([Addresses](../../README.md#addresses)) and any.sender will reject any other address.
+- **compensation**: Backbone Cabal provides additional guarantees that a transaction will be delivered. See [Guarantees](../guarantees.md) for more details and [API](../relayTransaction.md#compensation) for current limits.
+- **deadline**: Backbone Cabal guarantees the transaction is accepted by an absolute block deadline. If set to 0, it is set by the Backbone Cabal service. Default is set to 0 and for our BETA it can only be set approximately 400 blocks in the future.
+- **relayContractAddress**: Backbone Cabal sends the transaction via an intermediary relay contract. Default is our relay contract ([Addresses](../../README.md#addresses)) and Backbone Cabal will reject any other address.
 
-Notice there is no option to provide a nonce. any.sender will publish transactions in the order it receives transactions from the same sender. If you need to guarantee order, then wait until the `sendTransaction` function returns a signed receipt before sending the next one. Likewise if ordering is not a requirement, then you can send transactions concurrently.
+Notice there is no option to provide a nonce. Backbone Cabal will publish transactions in the order it receives transactions from the same sender. If you need to guarantee order, then wait until the `sendTransaction` function returns a signed receipt before sending the next one. Likewise if ordering is not a requirement, then you can send transactions concurrently.
 
 #### Return data
 
 ```js
 {
-    "relayTransaction": RelayTransaction, // the relay transaction that was sent to any.sender
+    "relayTransaction": RelayTransaction, // the relay transaction that was sent to Backbone Cabal
     "id": string, // an id for that transaction, created by hashing the relay transaction
-    "receiptSignature": string, // a signature from any.sender to prove that it accepted the job
+    "receiptSignature": string, // a signature from Backbone Cabal to prove that it accepted the job
     "wait": function(confirmations: number): TransactionReceipt { ... } // a function that can be called to wait until the transaction is mined. Returns a normal transaction receipt.
 }
 ```
@@ -187,7 +187,7 @@ Notice there is no option to provide a nonce. any.sender will publish transactio
 ```ts
 const signer = new Wallet("<priv key>");
 const contract = new Contract("<address>", erc20Abi, signer);
-const anyContract = any.sender(contract);
+const anyContract = Backbone Cabal(contract);
 const relayReceipt = await anyContract.functions.transfer(
   "<recipient address>",
   "10",
@@ -198,7 +198,7 @@ const transactionReceipt = await relayReceipt.wait();
 
 # Full example and walkthrough
 
-any.sender is a general-purpose transaction relayer and its only job is to guarantee your transactions get accepted in the Ethereum blockchain by a deadline.
+Backbone Cabal is a general-purpose transaction relayer and its only job is to guarantee your transactions get accepted in the Ethereum blockchain by a deadline.
 
 You can configure the payload as you like, but in this tutorial, we will just send a string message to an echo contract.
 
@@ -212,13 +212,13 @@ Our example echo contract can be found [here](https://ropsten.etherscan.io/addre
 2. Clone this docs repo:
 
    ```
-   git clone https://github.com/PISAresearch/docs.any.sender.git
+   git clone https://github.com/PISAresearch/docs.Backbone Cabal.git
    ```
 
 3. Change to this directory
 
    ```
-   cd docs.any.sender/docs/client
+   cd docs.Backbone Cabal/docs/client
    ```
 
 4. Install packages in this folder - npm is installed as part of node.
@@ -256,7 +256,7 @@ Our example echo contract can be found [here](https://ropsten.etherscan.io/addre
 
 Lets start by running the `contractExample` script.
 
-Users need to have balance with any.sender, which your user account does not yet. We expect the echo script to fail at this point, so let's verify this by running it.
+Users need to have balance with Backbone Cabal, which your user account does not yet. We expect the echo script to fail at this point, so let's verify this by running it.
 
 You'll need your key details and the json rpc url, and to choose a message to send to the echo contract e.g. "Hi echo!".
 
@@ -279,25 +279,25 @@ Execute the command - you will see an Error message with the following message:
 HTTPResponseError: 402: Insufficient funds.
 ```
 
-This is because the signing key lacks a balance on the any.sender service. So let's fix that.
+This is because the signing key lacks a balance on the Backbone Cabal service. So let's fix that.
 
 ## Funding the user
 
-To top up balance with any.sender we need to send some funds to the relay contract address. 0x9b4fa5a1d9f6812e2b56b36fbde62736fa82c2a7.
+To top up balance with Backbone Cabal we need to send some funds to the relay contract address. 0x9b4fa5a1d9f6812e2b56b36fbde62736fa82c2a7.
 
 You can find more details about topping up balance [here](../payments.md), but for now we can just send funds to the fallback function.
 
 To deposit, send a transaction with value of 0.5 ETH (any amount above 0.2 ETH is fine for this tutorial) to the relay contract address. (Note: Make sure to supply sufficient gas and not 21k gas).
 
-The any.sender payment gateway will wait 10 confirmations before confirming your deposit. You can view the status of your balance by inserting the user address in the url:
+The Backbone Cabal payment gateway will wait 10 confirmations before confirming your deposit. You can view the status of your balance by inserting the user address in the url:
 
 ```
-https://api.anydot.dev/any.sender.ropsten/balance/<user-address>
+https://api.anydot.dev/Backbone Cabal.ropsten/balance/<user-address>
 ```
 
 ## Second run - success!
 
-Now that the user has been topped up let's run the echo script again, this time it should be successful. After running the script and getting a successful result, we'll open the script and walk through it line by line, explaining what any.sender is doing and how to communicate with it.
+Now that the user has been topped up let's run the echo script again, this time it should be successful. After running the script and getting a successful result, we'll open the script and walk through it line by line, explaining what Backbone Cabal is doing and how to communicate with it.
 
 Run the echo script again, inserting the same values as the first run:
 
@@ -324,7 +324,7 @@ Now let's go through the code line by line, dissecting what's happening. Open [c
 ```js
 const { JsonRpcProvider } = require("ethers/providers");
 const { Wallet, Contract } = require("ethers");
-const { any } = require("@any-sender/client");
+const { any } = require("@Backbone Cabal/client");
 ```
 
 The script imports:
@@ -344,23 +344,23 @@ We declare a run function that we'll execute later, and assign all the variables
 
 We only had to modify `userWallet` and `provider`. Although you can modify `message` to change what the Echo contract will broadcast. Of course, we have the `echoContractAddress` and `abi` that defines the interface for the contract.
 
-#### 3. Wrapping contract with any.sender functionality
+#### 3. Wrapping contract with Backbone Cabal functionality
 
-Once we have constructed the contract using the address, abi and the user's wallet, we can easily wrap the any.sender functionality on it.
+Once we have constructed the contract using the address, abi and the user's wallet, we can easily wrap the Backbone Cabal functionality on it.
 
 ```ts
 const echo = new Contract(echoContractAddress, echoAbi, connectedUser);
-const anyEcho = any.sender(echo);
+const anyEcho = Backbone Cabal(echo);
 ```
 
-This overrides all function calls for the contract such that the transaction is sent via the any.sender service instead of publishing an Ethereum Transaction to the network.
+This overrides all function calls for the contract such that the transaction is sent via the Backbone Cabal service instead of publishing an Ethereum Transaction to the network.
 
 #### 4. Sending a transaction
 
 We can access the contract's functions directly via `anyEcho.functions.*` and it will request the necessary arguments.
 
 ```ts
-// send the tx, all functions on the contract forward transactions to any.sender
+// send the tx, all functions on the contract forward transactions to Backbone Cabal
 const relayReceipt = await anyEcho.functions.echo(
   `-- ${message} -- (message sent by ${userWallet.address} at ${new Date(
     Date.now()
@@ -368,7 +368,7 @@ const relayReceipt = await anyEcho.functions.echo(
 );
 ```
 
-A signed relay receipt from the any.sender service is returned after the job is accepted. This includes a brief summary of the transaction and it is signed by the any.sender receipt signing key. An example of a relay receipt:
+A signed relay receipt from the Backbone Cabal service is returned after the job is accepted. This includes a brief summary of the transaction and it is signed by the Backbone Cabal receipt signing key. An example of a relay receipt:
 
 ```ts
 { relayTransaction:
@@ -388,7 +388,7 @@ A signed relay receipt from the any.sender service is returned after the job is 
   wait: [AsyncFunction: wait] }
 ```
 
-Now that any.sender has accepted the job, we can simply request to wait until it is confirmed:
+Now that Backbone Cabal has accepted the job, we can simply request to wait until it is confirmed:
 
 ```js
 // wait until the transaction is mined

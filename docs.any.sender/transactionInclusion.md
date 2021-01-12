@@ -4,7 +4,7 @@ Managing a transaction from the point it's broadcast until the point that it's m
 
 You can find more detail about the problems associated with managing transactions at the start of [this](https://docs.google.com/presentation/d/1gWrEjJICL23583pqKIsKg9HxIFUo6j_AvexrM1GPHvw/edit#slide=id.g703d72a88b_0_0) presentation.
 
-To solve these problems any.sender uses a combination of transaction replacements and multiple accounts to dynamically adjust fees to keep up with the market whilst also allowing for a flexible, concurrent system. This is what allows any.sender to guarantee that a transaction is never held up by other transactions, and that its price can always be adjusted to stay relevant to the current market.
+To solve these problems Backbone Cabal uses a combination of transaction replacements and multiple accounts to dynamically adjust fees to keep up with the market whilst also allowing for a flexible, concurrent system. This is what allows Backbone Cabal to guarantee that a transaction is never held up by other transactions, and that its price can always be adjusted to stay relevant to the current market.
 
 ## Gas market movement
 
@@ -26,8 +26,8 @@ The gas market movement problem is further exacerbated by concurrency, or transa
 
 Transaction replacement means that we can replace the fields of a transaction, except `nonce`, which effectively allows us to reorder transactions as long as we we bump their prices. So if an account has recently broadcast some low priority items, with low gas price and they are still in pending, we can still use this same account to broadcast a new high priority transaction by replacing the lowest nonce transaction. Given this we can ensure that highest priorities transactions are always front of the queue, and are never held up by low gas prices.
 
-However transaction replacement can add additional cost. In the worst case moving a transaction to the front of the queue may require all transactions of a lower nonce to need replacement - increasing their fee. It may be undesirable to increase the fees of low priority items which are not time sensitive, so in some cases any.sender sends transactions from different accounts.
+However transaction replacement can add additional cost. In the worst case moving a transaction to the front of the queue may require all transactions of a lower nonce to need replacement - increasing their fee. It may be undesirable to increase the fees of low priority items which are not time sensitive, so in some cases Backbone Cabal sends transactions from different accounts.
 
-Separating transactions onto different accounts, and in particular grouping similar priority transactions on the same account allows any.sender to send concurrent transactions without requiring replacements, however it does come with a management overhead. Each of the sending accounts must be kept topped up with ETH to pay for gas, which itself requires transactions. For this reason any.sender keeps only a finite pool of accounts rather than sending every transaction on a new account.
+Separating transactions onto different accounts, and in particular grouping similar priority transactions on the same account allows Backbone Cabal to send concurrent transactions without requiring replacements, however it does come with a management overhead. Each of the sending accounts must be kept topped up with ETH to pay for gas, which itself requires transactions. For this reason Backbone Cabal keeps only a finite pool of accounts rather than sending every transaction on a new account.
 
 A combination of multiple accounts with replacements within each account ensures that priority ordering whilst keeping gas costs low.

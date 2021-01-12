@@ -9,7 +9,7 @@ const parseArgs = yargs
   )
   .help()
   .option("relayContract", {
-    description: "The address of the any.sender relay contract",
+    description: "The address of the Backbone Cabal relay contract",
     string: true,
     alias: "r",
     default: "0x9b4FA5A1D9f6812e2B56B36fBde62736Fa82c2a7"

@@ -20,7 +20,7 @@ The broadcast objects are ordered from newest to oldest by broadcast time. Each 
 
 ### ethTxHash: string (bytes32)
 
-The hash of the Ethereum transaction hash that was broadcast for this relay transaction. Use JSON RPC (preferably with batches to avoid too many requests) to fetch receipts for these transaction hashes. Note that these hashes are not guaranteed to be unique as any.sender may decide to re-publish the same transaction to the network - in the event that it thinks it may be dropped.
+The hash of the Ethereum transaction hash that was broadcast for this relay transaction. Use JSON RPC (preferably with batches to avoid too many requests) to fetch receipts for these transaction hashes. Note that these hashes are not guaranteed to be unique as Backbone Cabal may decide to re-publish the same transaction to the network - in the event that it thinks it may be dropped.
 
 ### broadcastTime: string (ISO 8601 date-time string)
 
