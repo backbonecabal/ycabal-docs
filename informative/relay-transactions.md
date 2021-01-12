@@ -1,6 +1,13 @@
+---
+title: Relay Transactions
+topic: Informative Reference
+version: release 
+tags: meta transactions, relay  transactions, sponsored transactions, batch transactions
+---
+
 # Relay Transactions
 
-Backbone Cabal has two types of relay transactions:
+Backbone Cabal can process **at least two** different types of relay transactions:
 
 - **Direct transaction.** Best effort delivery and the relay transaction is sent directly to the target contract. It incurs 0 gas overhead.
 - **Accountable transaction.** Guaranteed delivery by a block deadline, but the transaction is sent via a relay contract. It incurs a 45k gas overhead.
@@ -59,7 +66,7 @@ The abi encoded call data. This is the same field, and contains the same data, a
 
 ### signature (bytes)
 
-A signature made by the `from` authority over the full relay transaction data, using this [digest](https://github.com/PISAresearch/contracts.Backbone Cabal/blob/b13be3dff24989fd24783ae3d79104124a38b2fa/versions/0.3.0/contracts/core/RelayTxStruct.sol#L23).
+A signature made by the `from` authority over the full relay transaction data
 
 ## Accountable Transactions
 
@@ -127,7 +134,3 @@ The value of the compensation (wei) that the user will be owed if Backbone Cabal
 ### relayContractAddress (address)
 
 The address of the relay contract that will be used to relay this transaction. This is a necessary for proving accountable behaviour on-chain.
-
-### signature (bytes)
-
-A signature made by the `from` authority over the full relay transaction data, using this [digest](https://github.com/PISAresearch/contracts.Backbone Cabal/blob/b13be3dff24989fd24783ae3d79104124a38b2fa/versions/0.3.0/contracts/core/RelayTxStruct.sol#L23).
