@@ -1,0 +1,21 @@
+.DS_Store
+node_modules
+.idea/
+**/target/
+.vscode
+**/.project
+**/.settings/
+**/.metadata/
+**/.DS_Store
+**/org.eclipse.core.resources.prefs
+**/org.eclipse.m2e.core.prefs
+**/org.eclipse.jdt.core.prefs
+**/.classpath
+**/.log
+*.iml
+
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
