@@ -416,47 +416,53 @@ USD”. The seller would then sign a complimentary message such as
 “authorize sell of 1 ETH at 90 USD with order …”. Systems such as 0x
 and IDEX use this method.
 
-The BACKBONE takes a new approach to secure settlements. Off-chain, the user
-signs a trading limit with the exchange. The trading limit has the
+Maidenlane takes an pproach to secure settlements. Off-chain, the user
+signs a trading limit with the clearing network. The trading limit has the
 following attributes:
 
-min_quote_qty: The smallest value the quote balance can be updated to.
+*min_quote_qty*: The smallest value the quote balance can be updated to.
 Limits the quantity that can be purchased.
 
-min_base_qty: The smallest value the base balance can be updated to.
+*min_base_qty*: The smallest value the base balance can be updated to.
 Limits the quantity that can be sold.
 
-max_long_price: The maximum average price allowed to purchase the
+*max_long_price:* The maximum average price allowed to purchase the
 asset.
 
-min_short_price: The minimum average price allowed to sell the asset.
+*min_short_price*: The minimum average price allowed to sell the asset.
 
-quote_shift: A value used to shift the quote_quantity used in
+q*uote_shift*: A value used to shift the quote_quantity used in
 calculation to realize a loss / profit in the quote asset.
 
-base_shift: A value used to shift the base_quantity used in calculation
+*base_shift*: A value used to shift the base_quantity used in calculation
 to realize a loss / profit in the base asset.
 
 As an example, here are a few values with a description of the limit.
 
+```
 min_quote_qty: -10
 min_base_qty: 0
 max_long_price: 123.45
 min_short_price: 99999999999
+```
 
 Can spend upto 10 USD on ETH at a maximum price of 123.45 USD/ETH
 
+```
 min_quote_qty: 0
 min_base_qty: -0.3
 max_long_price: 0
 min_short_price: 100.0
+```
 
 Can sell upto 0.3 ETH at a minimum price of 100.00 USD/ETH.
 
+```
 min_quote_qty: -10
 min_base_qty: -0.3
 max_long_price: 123.45
 min_short_price: 100.0
+```
 
 Can spend upto 10 USD on ETH at a maximum price of 123.45 USD/ETH
 or sell upto 0.3 ETH at a minimum price of 100.00 USD/ETH.
