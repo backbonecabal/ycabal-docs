@@ -30,7 +30,13 @@ Potential benefits including offering zero-cost trading fees (meaning profits fr
 with the on-chain and off-chain components required to realize arbitrage profits.
 
 
-## A relayer smart contract
+
+
+### Meta Transaction Overview
+
+> You can skip this section, it is only provided for information reasons. Our transaction relay system does not need to utilize this system as we are not doing batch transactions for the purpose of lower transactional cost.  This section is to illustrate teh differences only.
+
+## Onchain Relay Transactions
 
 A smart contract that processes meta transactions. Does not require token smart contracts to upgrade.
 
