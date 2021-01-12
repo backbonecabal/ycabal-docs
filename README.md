@@ -1,4 +1,36 @@
-# A relayer smart contract
+
+<!--
+----
+title: Backbone Cabal 
+status soft proposal, draft
+version: 0.2.8
+platforms: sushiswap, yearn finance, keep3r
+---
+-->
+
+# YCabal: Monopolizing transaction flow for arbitrage batching with miner support.
+
+This is a strategy that realizes a profit by smart transaction batching for the purposes of arbitrage by controlling transaction ordering.
+
+Right now every user sends a transaction directly to the network mempool and thus gives away the arbitrage, front-running, back-running opportunities to miners(or random bots).
+
+YCabal creates a virtualized mempool (i.e. a MEV-relay network) that aggregates transactions (batching), such transactions include:
+
+Potential benefits including offering zero-cost trading fees (meaning profits from arbitrage are used to pay for user’s transactions). Additional benefits and potential applications are further discussed in this proposal.
+
+#### Important: Note that there are *two* diffrent uses of the concept of **batching**. For our purposes we use **batching** to denote the aggregation of transactions. Typically batching refers to the process of both aggregation of transactions for the purpose of reduced transactional cost. 
+
+#### Forward Notes 
+
+- Multiple systems are at play, but at the most basic is the RPC permissioned network. 
+
+- Both on-chain contracts for arbitrage and off-chain infrastructure for calculating  arbitrage are used to varying degrees
+
+- Further development of a *interprotocol clearing and call market* are touched upon in this document. The inital release vanidate of YCabal only concerns itself 
+with the on-chain and off-chain components required to realize arbitrage profits.
+
+
+## A relayer smart contract
 
 A smart contract that processes meta transactions. Does not require token smart contracts to upgrade.
 
